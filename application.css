@@ -1,0 +1,108 @@
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #111111; /* Dark background */
+  color: #00ff00; /* Toxic green text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden; /* Hide overflow for particles */
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #00ff00; /* Toxic green */
+  text-shadow: 0px 0px 10px #00ff00; /* Glow effect */
+}
+
+table.puzzle-table {
+  border-spacing: 10px;
+  margin: 0 auto;
+  background-color: #333333; /* Dark gray background for the table */
+  border-radius: 8px;
+  padding: 10px;
+  position: relative; /* To position particles */
+}
+
+table.puzzle-table td {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #222222; /* Dark gray for tiles */
+  color: #00ff00; /* Toxic green text */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 0px 10px #00ff00; /* Green glow effect around tiles */
+}
+
+table.puzzle-table td:hover {
+  background-color: #444444; /* Slightly lighter gray on hover */
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px #00ff00; /* Stronger glow effect on hover */
+}
+
+table.puzzle-table td:active {
+  transform: scale(0.95);
+}
+
+table.puzzle-table td.empty {
+  background-color: #111111; /* Match background color */
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.2; /* Slightly fade the empty space */
+}
+
+/* Bubble-Up Animation */
+@keyframes bubble-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Applying the animation to the tiles */
+table.puzzle-table td {
+  animation: none;
+}
+
+table.puzzle-table td.bubble {
+  animation: bubble-up 0.3s ease-in-out;
+}
+
+/* Particle effect styling */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #00ff00; /* Toxic green */
+  border-radius: 50%;
+  pointer-events: none; /* Don't interfere with clicks */
+  animation: particle-move 1s ease-out forwards;
+}
+
+/* Particle movement animation */
+@keyframes particle-move {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(2);
+    opacity: 0;
+  }
+}
